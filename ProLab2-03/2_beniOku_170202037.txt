@@ -1,0 +1,60 @@
+ProLab2-03 Netflix Problemi
+Bu 2_beniOku_170202037.txt dosyası, ProLab2-03 koduna aittir.
+Bu paket, kod ile aynı dosya içerisinde bulunacaktır.
+
+
+------------------------------------------------------------------------------------------------------------
+1.Paketin İçeriği
+------------------------------------------------------------------------------------------------------------
+Java dosyaları
+ProLab203.java
+Giris.form
+Giris.java
+Kayıt.form
+Kayıt.java
+AnaMenu.form
+AnaMenu.java
+
+2_beniOku_170202037.txt - Bu dosya 
+2_170202037_Rapor.docx - Rapor
+2_170202037_Rapor.pdf - Rapor
+2_170202037.txt - Kaynak Dosyası
+ProLab2-03.jar - Uygulamanın JAR dosyası
+sqlite-jdbc-3.27.2.jar - SQLite için JAR dosyası 
+BLM210 PRO LAB_II_3.proje.docx.pdf - Ödev Dosyası
+icon.png
+Netflix DB.xlsx
+Netflix.db
+Netflix.db.sqbpro
+NetflixDB.txt
+NetflixDB.xml
+Untitled Diagram.png
+Untitled Diagram.xml
+
+
+------------------------------------------------------------------------------------------------------------
+2.Sistem Gereksinimleri
+------------------------------------------------------------------------------------------------------------
+JVM
+
+
+------------------------------------------------------------------------------------------------------------
+3.Kurulum
+------------------------------------------------------------------------------------------------------------
+Kod Windows 10 yüklü bilgisayarlarda çalışabilir.
+Kod JVM'e sahip cihazlarda çalışabilir.
+DB Browser for SQLite uygulamasıyla SQL veritabanı editlendi.
+Kod NetBeans IDE 8.2 derleyicisi üzerinde denendi.
+ProLab203.java dosyası NetBeans IDE 8.2 derleyicisi ile birlikte çalıştırıldığında kullanılabilir.
+
+
+------------------------------------------------------------------------------------------------------------
+4.Kodu Derlemek
+------------------------------------------------------------------------------------------------------------
+NetBeans IDE 8.2 derleyicisi gibi derleyiciler yardımıyla bilgisayarlarda çalıştırılabilir.
+
+
+------------------------------------------------------------------------------------------------------------
+5.Parametreler
+------------------------------------------------------------------------------------------------------------
+Kodun çalışması için başlangıça hiçbir parametre gerekmemektedir.

@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1540139949 source:c:\users\arda\desktop\prolab01\test\main.c
+	<stdio.h>
+	<stdlib.h>
+

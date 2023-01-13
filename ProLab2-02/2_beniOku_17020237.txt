@@ -1,0 +1,51 @@
+ProLab2-02 Sıkıştırma Projesi
+Bu 2_beniOku_170202037.txt dosyası, ProLab2-02 koduna aittir.
+Bu paket, kod ile aynı dosya içerisinde bulunacaktır.
+
+--------------------------------------------------------------------------
+1.Paketin İçeriği
+--------------------------------------------------------------------------
+
+
+main.c
+ProLab2-02.exe
+2_170202037.txt - Kaynak Dosyası
+2_170202037_Rapor.docx - Rapor
+2_beniOku_170202037.txt - Bu dosya
+programlama lab II-2.proje.pdf - Proje Açıklama Dosyası
+oku.txt
+decoded.txt
+encoded.txt
+
+Ekran Görüntüleri
+1.jpg
+2.jpg
+3.jpg
+4.jpg
+5.jpg
+6.jpg
+
+
+
+--------------------------------------------------------------------------
+2.Sistem Gereksinimleri
+--------------------------------------------------------------------------
+Windows 10
+
+--------------------------------------------------------------------------
+3.Kurulum
+--------------------------------------------------------------------------
+Kod Windows 10 yüklü bilgisayarlarda çalışabilir.
+Kod Code::Blocks 17.12 IDE derleyicisi üzerinde denendi.
+
+
+--------------------------------------------------------------------------
+4.Kodu Derlemek
+--------------------------------------------------------------------------
+Code::Blocks 17.12 IDE derleyicisi gibi derleyiciler yardımıyla bilgisayarlarda çalıştırılabilir.
+
+
+--------------------------------------------------------------------------
+5.Parametreler
+--------------------------------------------------------------------------
+Kodun çalışması için başlangıça hiçbir parametre gerekmemektedir.

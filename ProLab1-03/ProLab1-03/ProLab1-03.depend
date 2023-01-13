@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1577650495 source:d:\arda\okul\study\prolab1-03\prolab1-03\main.c
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+	<string.h>
+

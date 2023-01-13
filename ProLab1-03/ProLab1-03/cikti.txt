@@ -1,0 +1,89 @@
+1	Adana,AK,Hatay,Osmaniye,Kahramanmaras,Kayseri,Nigde,Mersin	iye,Kahramanmaras,Kayseri,Nigde,Mersin
+Ðq
+2	Adiyaman,GA,Sanliurfa,Diyarbakir,Malatya,Kahramanmaras,Gaziantep	a,Diyarbakir,Malatya,Kahramanmaras,Gaziantep
+(null)
+3	Afyon,EG,Isparta,Konya,Eskisehir,Kutahya,Usak,Denizli,Burdur	ya,Eskisehir,Kutahya,Usak,Denizli,Burdur
+(null)
+4	Agri,DA,Van,Igdir,Kars,Erzurum,Mus,Bitlis	rs,Erzurum,Mus,Bitlis
+(null)
+5	Amasya,KA,Yozgat,Tokat,Samsin,Corum	at,Samsin,Corum
+(null)
+6	Ankara,IA,Konya,Aksaray,Kirsehir,Kirikkale,Cankiri,Bolu,Eskisehir	ray,Kirsehir,Kirikkale,Cankiri,Bolu,Eskisehir
+(null)
+7	Antalya,AK,Mersin,Karaman,Konya,Isparta,Burdur,Mugla	raman,Konya,Isparta,Burdur,Mugla
+(null)
+8	Artvin,KA,Rize,Erzurum,Ardahan	um,Ardahan
+(null)
+9	Aydin,EG,Mugla,Denizli,Manisa,Izmir	li,Manisa,Izmir
+(null)
+10	Balikesir,EG,Izmir,Manisa,Kutahya,Bursa,Canakkale	anisa,Kutahya,Bursa,Canakkale
+(null)
+11	Bilecik,MA,Kutahya,Eskisehir,Bolu,Sakarya,Bursa	skisehir,Bolu,Sakarya,Bursa
+(null)
+12	Bingol,DA,Diyarbakir,Mus,Erzurum,Erzincan,Tunceli,Elazig	,Mus,Erzurum,Erzincan,Tunceli,Elazig
+(null)
+13	Bitlis,DA,Siirt,Van,Agri,Mus,Batman	Agri,Mus,Batman
+(null)
+14	Bolu,KA,Eskisehir,Ankara,Cankiri,Zonguldak,Duzce,Sakarya,Bilecik	kara,Cankiri,Zonguldak,Duzce,Sakarya,Bilecik
+(null)
+15	Burdur,AK,Mugla,Antalya,Isparta,Afyon,Denizli	lya,Isparta,Afyon,Denizli
+(null)
+16	Bursa,MA,Balikesir,Kutahya,Bilecik,Sakarya,Kocaeli,Yalova	utahya,Bilecik,Sakarya,Kocaeli,Yalova
+(null)
+17	Canakkale,MA,Balikesir,Tekirdag,Edirne	ir,Tekirdag,Edirne
+(null)
+18	Cankiri,IA,Ankara,Kirikkale,Corum,Kastamonu,Zonguldak,Bolu,Karabuk	rikkale,Corum,Kastamonu,Zonguldak,Bolu,Karabuk
+(null)
+19	Corum,KA,Yozgat,Amasya,Samsun,Sinop,Kastamonu,Cankiri,Kirikkale	ya,Samsun,Sinop,Kastamonu,Cankiri,Kirikkale
+(null)
+20	Denizli,EG,Mugla,Burdur,Afyon,Usak,Manisa,Aydin	dur,Afyon,Usak,Manisa,Aydin
+(null)
+21	Diyarbakir,GA,Sanliurfa,Mardin,Batman,Mus,Bingol,Elazig,Malatya,Adiyaman	rfa,Mardin,Batman,Mus,Bingol,Elazig,Malatya,Adiyaman
+(null)
+22	Edirne,MA,Canakkale,Tekirdag,Kirikkale	Tekirdag,Kirikkale
+(null)
+23	Elazig,DA,Diyarbakir,Bingol,Tunceli,Erzincan,Malatya	,Bingol,Tunceli,Erzincan,Malatya
+(null)
+24	Erzincan,DA,Elazig,Tunceli,Bingol,Erzurum,Bayburt,Gumushane,Giresun,Sivas,Malatya	unceli,Bingol,Erzurum,Bayburt,Gumushane,Giresun,Sivas,Malatya
+(null)
+25	Erzurum,DA,Bingol,Mus,Agri,Kars,Ardahan,Artvin,Rize,Trabzon,Bayburt,Erzincan	s,Agri,Kars,Ardahan,Artvin,Rize,Trabzon,Bayburt,Erzincan
+(null)
+26	Eskisehir,IA,Afyon,Konya,Ankara,Bolu,Bilecik,Kutahya	onya,Ankara,Bolu,Bilecik,Kutahya
+(null)
+27	Gaziantep,GA,Kilis,Sanliurfa,Adiyaman,Kahramanmaras,Osmaniye,Hatay	anliurfa,Adiyaman,Kahramanmaras,Osmaniye,Hatay
+(null)
+28	Giresun,KA,Gumushane,Trabzon,Erzincan,Sivas,Ordu	,Trabzon,Erzincan,Sivas,Ordu
+(null)
+29	Gumushane,KA,Erzincan,Bayburt,Trabzon,Giresun	n,Bayburt,Trabzon,Giresun
+(null)
+30	Hakkari,DA,Van,Sirnak	k
+(null)
+31	Hatay,AK,Kilis,Gaziantep,Osmaniye,Adana	ntep,Osmaniye,Adana
+(null)
+32	Isparta,AK,Antalya,Konya,Afyon,Burdur	onya,Afyon,Burdur
+(null)
+33	Mersin,AK,Adana,Nigde,Konya,Karaman,Antalya	e,Konya,Karaman,Antalya
+(null)
+34	Istanbul,MA,Kocaeli,Tekirdag,Kirklareli	Tekirdag,Kirklareli
+(null)
+35	Izmir,EG,Aydin,Manisa,Balikesir	a,Balikesir
+(null)
+36	Kars,DA,Agri,Igdir,Ardahan,Erzurum	rdahan,Erzurum
+(null)
+37	Kastamonu,KA,Corum,Sinop,Cankiri,Bartin,Karabuk	inop,Cankiri,Bartin,Karabuk
+(null)
+38	Kayseri,IA,Adana,Kahramanmaras,Sivas,Yozgat,Nevsehir,Nigde	ramanmaras,Sivas,Yozgat,Nevsehir,Nigde
+(null)
+39	Kirklareli,MA,Edirne,Tekirdag,Istanbul	,Tekirdag,Istanbul
+(null)
+40	Kirsehir,IA,Nevsehir,Yozgat,Kirikkale,Ankara,Aksaray	,Yozgat,Kirikkale,Ankara,Aksaray
+(null)
+41	Kocaeli,MA,Yalova,Istanbul,Bursa,Bilecik,Sakarya	tanbul,Bursa,Bilecik,Sakarya
+(null)
+42	Konya,IA,Antalya,Karaman,Mersin,Nigde,Aksaray,Ankara,Eskisehir,Afyon,Isparta	aman,Mersin,Nigde,Aksaray,Ankara,Eskisehir,Afyon,Isparta
+(null)
+43	Kutahya,EG,Manisa,Usak,Afyon,Eskisehir,Bilecik,Bursa,Balikesir	ak,Afyon,Eskisehir,Bilecik,Bursa,Balikesir
+(null)
+44	Malatya,DA,Kahramanmaras,Adiyaman,Diyarbakir,Elazig,Erzincan,Sivas	aras,Adiyaman,Diyarbakir,Elazig,Erzincan,Sivas
+(null)
+45	M

@@ -1,0 +1,268 @@
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glut.h>
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <string.h>
+#include <math.h>
+#include <vector>
+
+GLfloat ctrlpoints[4][3] =
+{
+    { -4.0, -4.0, 0.0},
+    { -2.0,  4.0, 0.0},
+    {  2.0, -4.0, 0.0},
+    {  4.0,  4.0, 0.0}
+};
+
+void init(void)
+{
+    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glShadeModel(GL_FLAT);
+    glMap1f(GL_MAP1_VERTEX_3, 0.0, 1.0, 3, 4, &ctrlpoints[0][0]);
+    glEnable(GL_MAP1_VERTEX_3);
+}
+
+void display(void)
+{
+    int i;
+
+    glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(1.0, 1.0, 1.0);
+    glBegin(GL_LINE_STRIP);
+    for (i = 0; i <= 30; i++)
+        glEvalCoord1f((GLfloat) i/30.0);
+    glEnd();
+    /* The following code displays the control points as dots. */
+    glPointSize(10.0);
+    glColor3f(1.0, 1.0, 0.0);
+    glBegin(GL_POINTS);
+    for (i = 0; i < 4; i++)
+        glVertex3fv(&ctrlpoints[i][0]);
+    glEnd();
+    glFlush();
+
+
+    glColor3ub(511,0,0);
+    glLineWidth(1); // çizgi kalınlığı
+    glBegin(GL_LINES);
+    glVertex2f(0.0,10.0);
+    glVertex2f(0.0,-10.0);
+    glEnd();
+    glFlush();
+
+    glColor3ub(511,0,0);
+    glLineWidth(1); // çizgi kalınlığı
+    glBegin(GL_LINES);
+    glVertex2f(10.0,0.0);
+    glVertex2f(-10.0,0.0);
+    glEnd();
+    glFlush();
+
+    glColor3ub(511,0,0);
+    glLineWidth(1); // çizgi kalınlığı
+    glBegin(GL_LINES);
+    glVertex2f(9.5,0.5);
+    glVertex2f(10.0,0.0);
+    glEnd();
+    glFlush();
+
+    glColor3ub(511,0,0);
+    glLineWidth(1); // çizgi kalınlığı
+    glBegin(GL_LINES);
+    glVertex2f(0.0,10.0);
+    glVertex2f(-0.5,9.5);
+    glEnd();
+    glFlush();
+
+    glColor3ub(511,0,0);
+    glLineWidth(1); // çizgi kalınlığı
+    glBegin(GL_LINES);
+    glVertex2f(0.0,10.0);
+    glVertex2f(0.5,9.5);
+    glEnd();
+    glFlush();
+
+    glColor3ub(511,0,0);
+    glLineWidth(1); // çizgi kalınlığı
+    glBegin(GL_LINES);
+    glVertex2f(10.0,0.0);
+    glVertex2f(9.5,-0.5);
+    glEnd();
+    glFlush();
+
+    glutSwapBuffers();
+
+
+}
+
+void reshape(int w, int h)
+{
+    glViewport(0, 0, (GLsizei) w, (GLsizei) h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    if (w <= h)
+        glOrtho(-10.0, 10.0, -10.0*(GLfloat)h/(GLfloat)w,
+                10.0*(GLfloat)h/(GLfloat)w, -10.0, 10.0);
+    else
+        glOrtho(-10.0*(GLfloat)w/(GLfloat)h,
+                10.0*(GLfloat)w/(GLfloat)h, -10.0, 10.0, -10.0, 10.0);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+}
+
+using namespace std;
+
+double mesafe(double a, double b)
+{
+    return a*a + b+b;
+}
+
+int main(int argc, char** argv)
+{
+    char dosyaAdi[20];
+    double x[1005], y[1005], X, Y, d, e;
+    int i,n,satir=0;
+    printf("Dosya adini yaziniz: ");
+    scanf("%s",dosyaAdi);
+    FILE *dosya = fopen(dosyaAdi, "r");
+
+    if(dosya==NULL){
+        printf("Dosya acilamadi!\n");
+        //exit(1);
+    }
+
+    char ch;
+    while(ch!=EOF){
+        ch=fgetc(dosya);
+        if(ch=='\n'){
+            satir++;
+        }
+    }
+    printf("%d satir\n",satir);
+    printf("Noktalar: \n");
+    while(fscanf(dosya,"%lf , %lf", &x[i], &y[i])!=EOF){
+        for(i=0; i<satir; i++){
+            fscanf(dosya,"%lf , %lf", &x[i], &y[i]);
+            printf("%lf , %lf", &x[i], &y[i]);
+        }
+    }
+
+    //En kucuk cevreleyen cember
+    for (int i = 0; i < n; i++) {
+		scanf("%lf%lf", &x[i], &y[i]);
+		X += x[i]; Y += y[i];
+	}
+	X /= n; Y /= n;
+	double P = 0.1;
+	for (int i = 0; i < 30000; i++) {
+		int f = 0;
+		d = mesafe(X - x[0], Y - y[0]);
+		for (int j = 1; j < n; j++) {
+			e = mesafe(X - x[j], Y - y[j]);
+			if (d < e) { d = e; f = j; }
+		}
+		X += (x[f] - X)*P;
+		Y += (y[f] - Y)*P;
+		P *= 0.999;
+	}
+	printf("%.3lf %.3lf\n%.3lf", X, Y, sqrt(d));
+
+
+
+
+
+    glutInit(&argc, argv);
+    glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(720,720);
+    glutInitWindowPosition(360,50);
+    glutCreateWindow("Koordinat Sistemi ");
+    init();
+    glutDisplayFunc(display);
+    glutReshapeFunc(reshape);
+    glutMainLoop();
+
+    //dosya.close();
+    fclose(dosya);
+
+    return 0;
+}
+
+
+
+
+
+/*
+
+//Çember uygulamasý
+
+// C program to demonstrate
+// drawing a circle using
+// OpenGL
+#include<stdio.h>
+#include<GL/glut.h>
+#include<math.h>
+#define pi 3.142857
+
+// function to initialize
+void myInit (void){
+
+	// making background color black as first
+	// 3 arguments all are 0.0
+	glClearColor(0.0, 0.0, 0.0, 1.0);
+
+	// making picture color green (in RGB mode), as middle argument is 1.0
+	glColor3f(0.0, 1.0, 0.0);
+
+	// breadth of picture boundary is 1 pixel
+	glPointSize(1.0);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+
+	// setting window dimension in X- and Y- direction
+	gluOrtho2D(-800, 800, -450, 450);
+}
+
+void display (void){
+
+	glClear(GL_COLOR_BUFFER_BIT);
+	glBegin(GL_POINTS);
+	float x, y, i;
+
+	// iterate y up to 2*pi, i.e., 360 degree
+	// with small increment in angle as
+	// glVertex2i just draws a point on specified co-ordinate
+	for ( i = 0; i < (2 * pi); i += 0.001)
+	{
+		// let 200 is radius of circle and as,
+		// circle is defined as x=r*cos(i) and y=r*sin(i)
+		x = 200 * cos(i);
+		y = 200 * sin(i);
+
+		glVertex2i(x, y);
+	}
+	glEnd();
+	glFlush();
+}
+
+int main (int argc, char** argv)
+{
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+
+	// giving window size in X- and Y- direction
+	glutInitWindowSize(1280, 720);
+	glutInitWindowPosition(0, 0);
+
+	// Giving name to window
+	glutCreateWindow("Circle Drawing");
+	myInit();
+
+	glutDisplayFunc(display);
+	glutMainLoop();
+}
+
+*/

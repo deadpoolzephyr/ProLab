@@ -1,0 +1,43 @@
+ProLab2-01 Gezgin Kargo Problemi
+Bu 2_beniOku_170202037.txt dosyası, ProLab2-01 koduna aittir.
+Bu paket, kod ile aynı dosya içerisinde bulunacaktır.
+
+
+------------------------------------------------------------------------------------------------------------
+1.Paketin İçeriği
+------------------------------------------------------------------------------------------------------------
+Java dosyaları
+ProLab201.java
+
+2_beniOku_170202037.txt - Bu dosya 
+2_170202037_Rapor.docx - Rapor
+2_170202037.txt - Kaynak Dosyası
+ProLab2-01.jar - Uygulamanın JAR dosyası
+030320091559a1bcd.pdf - Ödev Dosyası
+
+
+------------------------------------------------------------------------------------------------------------
+2.Sistem Gereksinimleri
+------------------------------------------------------------------------------------------------------------
+JVM
+
+
+------------------------------------------------------------------------------------------------------------
+3.Kurulum
+------------------------------------------------------------------------------------------------------------
+Kod Windows 10 yüklü bilgisayarlarda çalışabilir.
+Kod JVM'e sahip cihazlarda çalışabilir.
+Kod NetBeans IDE 8.2 derleyicisi üzerinde denendi.
+ProLab201.java dosyası NetBeans IDE 8.2 derleyicisi ile birlikte çalıştırıldığında kullanılabilir.
+
+
+------------------------------------------------------------------------------------------------------------
+4.Kodu Derlemek
+------------------------------------------------------------------------------------------------------------
+NetBeans IDE 8.2 derleyicisi gibi derleyiciler yardımıyla bilgisayarlarda çalıştırılabilir.
+
+
+------------------------------------------------------------------------------------------------------------
+5.Parametreler
+------------------------------------------------------------------------------------------------------------
+Kodun çalışması için başlangıça hiçbir parametre gerekmemektedir.

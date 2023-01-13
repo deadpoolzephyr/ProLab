@@ -1,0 +1,523 @@
+ProLab03.java
+
+
+package prolab03;
+
+import java.util.Scanner;
+
+public class ProLab03 {
+
+    public static void main(String[] args) {
+        
+        robotIslem r = new robotIslem();
+        
+        
+        Scanner scan = new Scanner(System.in);
+        int robotSayi;
+        int sira, i;
+        String type;
+        String robotTipi1 = null;
+        String robotTipi2;
+
+        System.out.print("Tanýmlanacak Robot Sayýsý: ");
+            robotSayi = scan.nextInt();
+            String[] siraListe = new String[robotSayi];
+            for(i=1; i<=robotSayi; i++){
+            System.out.print("Tanýmlanacak Robot Tipi: ");
+                type = scan.next();
+            if(type.equalsIgnoreCase("hibrit")){
+                System.out.print("Hibrit robot için hareketli kýsmý: ");
+                robotTipi1 = scan.next();
+                if(robotTipi1.equalsIgnoreCase("Tekerlekli")){
+                //Tekerlekli(double tekerlekSayisi);
+                }
+                else if(robotTipi1.equalsIgnoreCase("Paletli")){
+                //Paletli(double paletSayisi);
+                }
+                else if(robotTipi1.equalsIgnoreCase("Spider")){
+                //Spider(double bacakSayisi);
+                }
+                else{
+                    System.out.println("Hatalý giris. Lütfen Tekrar deneyiniz.");
+                    
+                }
+                System.out.print("Hibrit robot için hareketsiz kýsmý: ");
+                robotTipi2 = scan.next();
+                if(robotTipi2.equalsIgnoreCase("Seri")){
+                //Seri(double kolUzunlugu, double yukMiktari);
+                }
+                else if(robotTipi2.equalsIgnoreCase("Paralel")){
+                //Paralel(double kolUzunlugu, double yukMiktari);
+                }
+                else{
+                    System.out.println("Hatalý giris. Lütfen Tekrar deneyiniz.");
+                    
+                }
+            }
+            else if(type.equalsIgnoreCase("Gezgin")){
+                System.out.print("Gezgin Robot için tip belirleyin:");
+                robotTipi1 = scan.next();
+                if(robotTipi1.equalsIgnoreCase("Tekerlekli")){
+                //Tekerlekli(double tekerlekSayisi);
+                }
+                else if(robotTipi1.equalsIgnoreCase("Paletli")){
+                //Paletli(double paletSayisi);
+                }
+                else if(robotTipi1.equalsIgnoreCase("Spider")){
+                //Spider(double bacakSayisi);
+                }
+                else{
+                    System.out.println("Hatalý giris. Lütfen Tekrar deneyiniz.");
+                    
+                }
+            }
+            else if(type.equalsIgnoreCase("Manipulator")){
+                System.out.print("Manipülatör Robot için tip belirleyin:");
+                robotTipi1 = scan.next();
+                if(robotTipi1.equalsIgnoreCase("Seri")){
+                //Seri(double kolUzunlugu, double yukMiktari);
+                }
+                else if(robotTipi1.equalsIgnoreCase("Paralel")){
+                //Paralel(double kolUzunlugu, double yukMiktari);
+                }
+                else{
+                    System.out.println("Hatalý giris. Lütfen Tekrar deneyiniz.");
+                    
+                }
+            }
+            siraListe[i]=robotTipi1;
+        }
+            
+            System.out.println("Hangi sýradaki robot hareket ettirilecek: ");
+            sira = scan.nextInt();
+            siraListe[sira] = robotTipi1;
+    }
+}
+
+
+--------------------------------------------------------------------------------------
+robotIslem.java
+
+
+package prolab03;
+
+import java.util.Scanner;
+
+public class robotIslem {
+    
+    
+    static public String robotTipi1;
+    static public String robotTipi2;
+    
+    Scanner scan = new Scanner(System.in);
+
+    private int engelSayisi;
+
+    public int getEngelSayisi() {
+        return engelSayisi;
+    }
+
+    public void setEngelSayisi(int engelSayisi) {
+        engelSayisi = scan.nextInt();
+        this.engelSayisi = engelSayisi;
+    }
+
+    public void EngelKoordinat() {
+        
+        int[][] koordinat = new int[20][20];
+        int[][] engelKoor = new int[engelSayisi][engelSayisi];
+            Scanner k = new Scanner(System.in);
+        int a = 0, b = 0, i, j;
+        
+        for(i=0; i<engelSayisi; i++){
+            for(j=0; j<engelSayisi; j++){
+                /*
+                a = k.nextInt[a][];
+                b = k.nextInt[][b];
+                engelKoor[a][b];
+                */
+            }
+        }
+        
+    }
+
+}
+    
+
+--------------------------------------------------------------------------------------
+gezginRobotlar.java
+
+
+package prolab03;
+
+import java.util.Scanner;
+
+public abstract class gezginRobotlar {
+
+    private static String robotTipi1;
+    //Scanner scan = new Scanner (System.in);
+    
+    public double tekerlekSayisi;
+    public double paletSayisi;
+    public double bacakSayisi;
+    
+
+    
+    public void gezinmeHizi(){
+        
+        if(robotTipi1.equalsIgnoreCase("tekerlekli")){
+            
+            
+            }
+        else if(robotTipi1.equalsIgnoreCase("paletli")){
+            
+            
+            }
+        else if(robotTipi1.equalsIgnoreCase("spider")){
+            
+            
+            }
+        }
+    
+    public void EngelGecmeSuresiBul(){
+            
+            double EngelSure;
+            if(robotTipi1.equalsIgnoreCase("tekerlekli")){
+                EngelSure = tekerlekSayisi*(0.5);            
+            }
+            else if(robotTipi1.equalsIgnoreCase("paletli")){
+                EngelSure = paletSayisi*3;
+            }
+        }
+}
+
+
+--------------------------------------------------------------------------------------
+manipulatorRobotlar.java
+
+
+package prolab03;
+
+import java.util.Scanner;
+
+public abstract class manipulatorRobotlar {
+
+    private static String robotTipi1;
+    
+    public double yukMiktari;
+    public double kolUzunlugu;
+    
+
+    
+    
+    
+    public void TasimaKapasitesi(){
+        
+        if(robotTipi1.equalsIgnoreCase("seri")){
+            
+            
+            }
+        else if(robotTipi1.equalsIgnoreCase("paralel")){
+            
+            
+            }
+        }
+    
+}
+
+
+--------------------------------------------------------------------------------------
+hibritRobotlar.java
+
+
+package prolab03;
+
+import java.util.Scanner;
+
+public class hibritRobotlar {
+
+    private static String robotTipi1;
+    
+    private double tekerlekSayisi;
+    private double paletSayisi;
+    private double bacakSayisi;
+    private double yukMiktari;
+    private double kolUzunlugu;
+    private double sabitlenmeSuresi;
+    private double gecisSuresi;
+    
+   Scanner scan = new Scanner(System.in);
+    
+    public double getTekerlekSayisi() {
+        return tekerlekSayisi;
+    }
+
+    public void setTekerlekSayisi(double tekerlekSayisi) {
+        tekerlekSayisi = scan.nextDouble();
+        this.tekerlekSayisi = tekerlekSayisi;
+    }
+    
+    public double getPaletSayisi() {
+        return paletSayisi;
+    }
+
+    public void setPaletSayisi(double paletSayisi) {
+        paletSayisi = scan.nextDouble();
+        this.paletSayisi = paletSayisi;
+    }
+    
+    public double getBacakSayisi() {
+        return bacakSayisi;
+    }
+
+    public void setBacakSayisi(double bacakSayisi) {
+        bacakSayisi = scan.nextDouble();
+        this.bacakSayisi = bacakSayisi;
+    }
+    
+    public double getKolUzunlugu() {
+        return kolUzunlugu;
+    }
+
+    public void setKolUzunlugu(double kolUzunlugu) {
+        kolUzunlugu = scan.nextDouble();
+        this.kolUzunlugu = kolUzunlugu;
+    }
+
+    public double getYukMiktari() {
+        return yukMiktari;
+    }
+
+    public void setYukMiktari(double yukMiktari) {
+        yukMiktari = scan.nextDouble();
+        this.yukMiktari = yukMiktari;
+    }
+    
+    public double getSabitlenmeSuresi() {
+        return sabitlenmeSuresi;
+    }
+
+    public void setSabitlenmeSuresi(double sabitlenmeSuresi) {
+        sabitlenmeSuresi = scan.nextDouble();
+        this.sabitlenmeSuresi = sabitlenmeSuresi;
+    }
+    
+    public double getGecisSuresi() {
+        return gecisSuresi;
+    }
+
+    public void setGecisSuresi(double gecisSuresi) {
+        gecisSuresi = scan.nextDouble();
+        this.gecisSuresi = gecisSuresi;
+    }
+    
+    
+    static void gezinmeHizi(){
+        
+        if(robotTipi1.equalsIgnoreCase("tekerlekli")){
+            
+            
+            }
+        else if(robotTipi1.equalsIgnoreCase("paletli")){
+            
+            
+            }
+        else if(robotTipi1.equalsIgnoreCase("spider")){
+            
+            
+            }
+        }
+    
+    
+    public void TasimaKapasitesi(){
+        
+        if(robotTipi1.equalsIgnoreCase("seri")){
+            
+            
+            }
+        else if(robotTipi1.equalsIgnoreCase("paralel")){
+            
+            
+            }
+        }
+    
+    
+    public void EngelGecmeSuresiBul(){
+            
+            double EngelSure;
+            if(robotTipi1.equalsIgnoreCase("tekerlekli")){
+                EngelSure = tekerlekSayisi*(0.5);            
+            }
+            else if(robotTipi1.equalsIgnoreCase("paletli")){
+                EngelSure = paletSayisi*3;
+            }
+        }
+    
+}
+
+
+--------------------------------------------------------------------------------------
+Tekerlekli.java
+
+
+package prolab03;
+
+import java.util.Scanner;
+
+public class Tekerlekli extends gezginRobotlar {
+    
+    Scanner scan = new Scanner(System.in);
+    
+    public void Tekerlekli(){
+    double tekerlekSayisi;
+
+    }
+    
+    public double getTekerlekSayisi() {
+        return tekerlekSayisi;
+    }
+
+    public void setTekerlekSayisi(double tekerlekSayisi) {
+        tekerlekSayisi = scan.nextDouble();
+        this.tekerlekSayisi = tekerlekSayisi;
+    }
+}
+
+
+--------------------------------------------------------------------------------------
+Paletli.java
+
+
+package prolab03;
+
+import java.util.Scanner;
+
+public class Paletli extends gezginRobotlar {
+    
+    Scanner scan = new Scanner(System.in);
+    
+    public void Paletli(){
+    double paletSayisi;
+
+    }
+    
+    public double getPaletSayisi() {
+        return paletSayisi;
+    }
+
+    public void setPaletSayisi(double paletSayisi) {
+        paletSayisi = scan.nextDouble();
+        this.paletSayisi = paletSayisi;
+    }
+    
+}
+
+
+--------------------------------------------------------------------------------------
+Spider.java
+
+
+package prolab03;
+
+import java.util.Scanner;
+
+public class Spider extends gezginRobotlar{
+    
+    Scanner scan = new Scanner(System.in);
+    
+    public void Spider(){ 
+    double bacakSayisi;
+
+    }
+    
+    public double getBacakSayisi() {
+        return bacakSayisi;
+    }
+
+    public void setBacakSayisi(double bacakSayisi) {
+        bacakSayisi = scan.nextDouble();
+        this.bacakSayisi = bacakSayisi;
+    }
+    
+}
+
+
+--------------------------------------------------------------------------------------
+Seri.java
+
+
+package prolab03;
+
+import java.util.Scanner;
+
+public class Seri extends manipulatorRobotlar {
+    
+    Scanner scan = new Scanner(System.in);
+    
+    public void Seri(){
+    double kolUzunlugu;
+    double yukMiktari;
+
+    }
+    
+    public double getKolUzunlugu() {
+        return kolUzunlugu;
+    }
+
+    public void setKolUzunlugu(double kolUzunlugu) {
+        kolUzunlugu = scan.nextDouble();
+        this.kolUzunlugu = kolUzunlugu;
+    }
+
+    public double getYukMiktari() {
+        return yukMiktari;
+    }
+
+    public void setYukMiktari(double yukMiktari) {
+        yukMiktari = scan.nextDouble();
+        this.yukMiktari = yukMiktari;
+    }
+    
+}
+
+
+--------------------------------------------------------------------------------------
+Paralel.java
+
+
+package prolab03;
+
+import java.util.Scanner;
+
+public class Paralel extends manipulatorRobotlar {
+    
+    Scanner scan = new Scanner(System.in);
+
+    public void Paralel(){
+    double kolUzunlugu;
+    double yukMiktari;
+
+    }
+    
+    public double getKolUzunlugu() {
+        return kolUzunlugu;
+    }
+
+    public void setKolUzunlugu(double kolUzunlugu) {
+        kolUzunlugu = scan.nextDouble();
+        this.kolUzunlugu = kolUzunlugu;
+    }
+
+    public double getYukMiktari() {
+        return yukMiktari;
+    }
+
+    public void setYukMiktari(double yukMiktari) {
+        yukMiktari = scan.nextDouble();
+        this.yukMiktari = yukMiktari;
+    }
+    
+}
+
+
+--------------------------------------------------------------------------------------

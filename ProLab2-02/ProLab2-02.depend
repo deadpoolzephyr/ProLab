@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1589736896 source:d:\arda\okul\study\prolab2-02\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	<string.h>
+	"deflate.h"
+

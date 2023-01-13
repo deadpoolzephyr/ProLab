@@ -1,0 +1,574 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <string.h>
+
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node *temp;
+int ch,choice,add,cnt=0,t=0;
+int l,*lno,lp;
+struct node *p;
+struct node *first;
+struct node *last;
+struct node *list;
+
+struct komsu
+{
+    char **komsuSehir;
+    unsigned int komsuSize;
+    int komsuPlakaKodu;
+};
+
+struct sehir
+{
+    int plakaKodu;
+    char sehirAdi[20];
+    char cografiBolge[2];
+    //int komsuSayisi;
+    struct komsu *komsu;
+};
+
+int main()
+{
+    FILE* d1 = NULL;
+    FILE* d2 = NULL;
+    d1 = fopen("sehirler.txt", "r+");
+    d2 = fopen("cikti.txt", "w+");
+
+    int secim;
+
+begin:
+    printf("--------MENU--------\n");
+    printf("1=Yeni sehir ekle.\n");
+    printf("2=Yeni komsuluk ekle.\n");
+    printf("3=Arama yap.\n");
+    printf("4=Bolge listele.\n");
+    printf("5=Komsu sayisina gore listele.\n");
+    printf("6=Cikis.\n");
+    printf("Secim yapiniz: ");
+    scanf("%d", &secim);
+
+
+
+
+    switch(secim)
+    {
+    case 1:
+    {
+        struct sehir *Sehir = malloc(sizeof(struct sehir)*82);
+        struct komsu *Komsu = malloc(sizeof(struct komsu)*82);
+
+
+        if(d1!=NULL)
+        {
+
+            int i = 0;
+
+            while(!feof(d1))
+            {
+                fscanf(d1,"%d,%s,%s,%s",
+                       &Sehir[i].plakaKodu,
+                       Sehir[i].sehirAdi,
+                       Sehir[i].cografiBolge,
+                       Komsu[i].komsuSehir);
+                //printf("%d\n",Sehir[i].plakaKodu);
+                //printf("%s\n",Sehir[i].sehirAdi);
+                //printf("%s\n",Sehir[i].cografiBolge);
+                //printf("%s\n",Komsu[i].komsuSehir);
+                printf("%d\t%s\t%s\n%s\n", Sehir[i].plakaKodu, Sehir[i].sehirAdi, Sehir[i].cografiBolge, Komsu[i].komsuSehir);
+                fprintf(d2,"%d\t%s\t%s\n%s\n", Sehir[i].plakaKodu, Sehir[i].sehirAdi, Sehir[i].cografiBolge, Komsu[i].komsuSehir);
+                i++;
+            }
+            fclose(d1);
+
+            printf("Eklemek istediginiz sehrin bilgilerini giriniz:(Plaka No,Sehir Adi,Bolgesi,Komsulari)\n");
+            scanf("%d,%s,%s,%s",Sehir[i].plakaKodu, Sehir[i].sehirAdi, Sehir[i].cografiBolge, Komsu[i].komsuSehir);
+            fprintf(d2,"%d\t%s\t%s\n%s\n", Sehir[i].plakaKodu, Sehir[i].sehirAdi, Sehir[i].cografiBolge, Komsu[i].komsuSehir);
+
+
+            char buffer[10240];
+            char *token;
+
+            while(fgets(buffer,10240,d1))
+            {
+                token=strtok(buffer,",");
+                Sehir[i].plakaKodu = atoi(token);
+
+                token=strtok(NULL,",");
+                strcpy(Sehir[i].sehirAdi,token);
+
+                token=strtok(NULL,",");
+                strcpy(Sehir[i].cografiBolge,token);
+
+                token=strtok(NULL,",");
+                strcpy(Komsu[i].komsuSehir,token);
+
+            }
+
+            token=strtok(NULL,",");
+            if(token)
+            {
+                Komsu[i].komsuSehir=malloc(sizeof(char *));
+                Komsu[i].komsuSehir[0]=strdup(token);
+                Komsu[i].komsuSize=1;
+
+                token=strtok(NULL,",");
+                while(token)
+                {
+                    Komsu[i].komsuSehir=realloc(Komsu[i].komsuSehir,(Komsu[i].komsuSize+1)*sizeof(char *));
+                    Komsu[i].komsuSehir[Komsu[i].komsuSize]=strdup(token);
+                    Komsu[i].komsuSize++;
+
+                    token=strtok(NULL,",");
+                }
+            }
+            fclose(d2);
+            free(sehir);
+            free(komsu);
+
+        }
+        else
+        {
+            printf("Dosya bulunamadi.");
+        }
+
+
+        //sehirEkle();
+
+        goto begin;
+    }
+    case 2:
+    {
+        struct sehir *Sehir = malloc(sizeof(struct sehir)*82);
+        struct komsu *Komsu = malloc(sizeof(struct komsu)*82);
+
+        if(d1!=NULL)
+        {
+
+            int i = 0;
+
+            while(!feof(d1))
+            {
+                fscanf(d1,"%d,%s,%s,%s",
+                       &Sehir[i].plakaKodu,
+                       Sehir[i].sehirAdi,
+                       Sehir[i].cografiBolge,
+                       Komsu[i].komsuSehir);
+                //printf("%d\n",Sehir[i].plakaKodu);
+                //printf("%s\n",Sehir[i].sehirAdi);
+                //printf("%s\n",Sehir[i].cografiBolge);
+                //printf("%s\n",Komsu[i].komsuSehir);
+                printf("%d\t%s\t%s\n%s\n", Sehir[i].plakaKodu, Sehir[i].sehirAdi, Sehir[i].cografiBolge, Komsu[i].komsuSehir);
+                fprintf(d2,"%d\t%s\t%s\n%s\n", Sehir[i].plakaKodu, Sehir[i].sehirAdi, Sehir[i].cografiBolge, Komsu[i].komsuSehir);
+                i++;
+            }
+            fclose(d1);
+            char buffer[10240];
+            char *token;
+
+            while(fgets(buffer,10240,d1))
+            {
+                token=strtok(buffer,",");
+                Sehir[i].plakaKodu = atoi(token);
+
+                token=strtok(NULL,",");
+                strcpy(Sehir[i].sehirAdi,token);
+
+                token=strtok(NULL,",");
+                strcpy(Sehir[i].cografiBolge,token);
+
+                token=strtok(NULL,",");
+                strcpy(Komsu[i].komsuSehir,token);
+
+            }
+
+            token=strtok(NULL,",");
+            if(token)
+            {
+                Komsu[i].komsuSehir=malloc(sizeof(char *));
+                Komsu[i].komsuSehir[0]=strdup(token);
+                Komsu[i].komsuSize=1;
+
+                token=strtok(NULL,",");
+                while(token)
+                {
+                    Komsu[i].komsuSehir=realloc(Komsu[i].komsuSehir,(Komsu[i].komsuSize+1)*sizeof(char *));
+                    Komsu[i].komsuSehir[Komsu[i].komsuSize]=strdup(token);
+                    Komsu[i].komsuSize++;
+
+                    token=strtok(NULL,",");
+                }
+            }
+            fclose(d2);
+            free(sehir);
+            free(komsu);
+        }
+        else
+        {
+            printf("Dosya bulunamadi.");
+        }
+
+
+        //komsuEkle();
+
+        goto begin;
+    }
+    case 3:
+    {
+        struct sehir *Sehir = malloc(sizeof(struct sehir)*82);
+        struct komsu *Komsu = malloc(sizeof(struct komsu)*82);
+
+        if(d1!=NULL)
+        {
+
+            int i = 0;
+
+            while(!feof(d1))
+            {
+                fscanf(d1,"%d,%s,%s,%s",
+                       &Sehir[i].plakaKodu,
+                       Sehir[i].sehirAdi,
+                       Sehir[i].cografiBolge,
+                       Komsu[i].komsuSehir);
+                //printf("%d\n",Sehir[i].plakaKodu);
+                //printf("%s\n",Sehir[i].sehirAdi);
+                //printf("%s\n",Sehir[i].cografiBolge);
+                //printf("%s\n",Komsu[i].komsuSehir);
+                //printf("%d\t%s\t%s\n%s\n", Sehir[i].plakaKodu, Sehir[i].sehirAdi, Sehir[i].cografiBolge, Komsu[i].komsuSehir);
+                //fprintf(d2,"%d\t%s\t%s\n%s\n", Sehir[i].plakaKodu, Sehir[i].sehirAdi, Sehir[i].cografiBolge, Komsu[i].komsuSehir);
+                i++;
+
+            }
+            fclose(d1);
+
+
+            printf("Sehir ile mi Plaka No ile mi arama yapmak istiyorsunuz?(Sehir/Plaka)\n");
+            char arama[5];
+            char arananS[20];
+            int arananP;
+            scanf("%s", arama);
+            if(arama=='Sehir')
+            {
+                scanf("%s",arananS);
+                if(strcmp(Sehir[i].sehirAdi,arananS==0))
+                {
+                    printf("%s %d %s\n",&Sehir[i].sehirAdi,Sehir[i].plakaKodu,Sehir[i].cografiBolge);
+                    fprintf(d2,"%s %d %s\n",&Sehir[i].sehirAdi,Sehir[i].plakaKodu,Sehir[i].cografiBolge);
+                }
+            }
+            else if(arama=='Plaka')
+            {
+                scanf("%d",&arananP);
+                if(arananP==Sehir[i].plakaKodu)
+                {
+                    printf("%d %s %s\n",&Sehir[i].plakaKodu,Sehir[i].sehirAdi,Sehir[i].cografiBolge);
+                    fprintf(d2,"%d %s %s\n",&Sehir[i].plakaKodu,Sehir[i].sehirAdi,Sehir[i].cografiBolge);
+                }
+            }
+
+
+            char buffer[10240];
+            char *token;
+
+            while(fgets(buffer,10240,d1))
+            {
+                token=strtok(buffer,",");
+                Sehir[i].plakaKodu = atoi(token);
+
+                token=strtok(NULL,",");
+                strcpy(Sehir[i].sehirAdi,token);
+
+                token=strtok(NULL,",");
+                strcpy(Sehir[i].cografiBolge,token);
+
+                token=strtok(NULL,",");
+                strcpy(Komsu[i].komsuSehir,token);
+
+            }
+
+            token=strtok(NULL,",");
+            if(token)
+            {
+                Komsu[i].komsuSehir=malloc(sizeof(char *));
+                Komsu[i].komsuSehir[0]=strdup(token);
+                Komsu[i].komsuSize=1;
+
+                token=strtok(NULL,",");
+                while(token)
+                {
+                    Komsu[i].komsuSehir=realloc(Komsu[i].komsuSehir,(Komsu[i].komsuSize+1)*sizeof(char *));
+                    Komsu[i].komsuSehir[Komsu[i].komsuSize]=strdup(token);
+                    Komsu[i].komsuSize++;
+
+                    token=strtok(NULL,",");
+                }
+            }
+
+
+
+            fclose(d2);
+            free(sehir);
+            free(komsu);
+        }
+        else
+        {
+            printf("Dosya bulunamadi.");
+        }
+
+        goto begin;
+
+    }
+    case 4:
+    {
+        struct sehir *Sehir = malloc(sizeof(struct sehir)*82);
+        struct komsu *Komsu = malloc(sizeof(struct komsu)*82);
+
+        if(d1!=NULL)
+        {
+
+            int i = 0;
+
+            while(!feof(d1))
+            {
+                fscanf(d1,"%d,%s,%s,%s",
+                       &Sehir[i].plakaKodu,
+                       Sehir[i].sehirAdi,
+                       Sehir[i].cografiBolge,
+                       Komsu[i].komsuSehir);
+                //printf("%d\n",Sehir[i].plakaKodu);
+                //printf("%s\n",Sehir[i].sehirAdi);
+                //printf("%s\n",Sehir[i].cografiBolge);
+                //printf("%s\n",Komsu[i].komsuSehir);
+                printf("%d\t%s\t%s\n%s\n", Sehir[i].plakaKodu, Sehir[i].sehirAdi, Sehir[i].cografiBolge, Komsu[i].komsuSehir);
+                fprintf(d2,"%d\t%s\t%s\n%s\n", Sehir[i].plakaKodu, Sehir[i].sehirAdi, Sehir[i].cografiBolge, Komsu[i].komsuSehir);
+                i++;
+            }
+            fclose(d1);
+            char buffer[10240];
+            char *token;
+
+            while(fgets(buffer,10240,d1))
+            {
+                token=strtok(buffer,",");
+                Sehir[i].plakaKodu = atoi(token);
+
+                token=strtok(NULL,",");
+                strcpy(Sehir[i].sehirAdi,token);
+
+                token=strtok(NULL,",");
+                strcpy(Sehir[i].cografiBolge,token);
+
+                token=strtok(NULL,",");
+                strcpy(Komsu[i].komsuSehir,token);
+
+            }
+
+            token=strtok(NULL,",");
+            if(token)
+            {
+                Komsu[i].komsuSehir=malloc(sizeof(char *));
+                Komsu[i].komsuSehir[0]=strdup(token);
+                Komsu[i].komsuSize=1;
+
+                token=strtok(NULL,",");
+                while(token)
+                {
+                    Komsu[i].komsuSehir=realloc(Komsu[i].komsuSehir,(Komsu[i].komsuSize+1)*sizeof(char *));
+                    Komsu[i].komsuSehir[Komsu[i].komsuSize]=strdup(token);
+                    Komsu[i].komsuSize++;
+
+                    token=strtok(NULL,",");
+                }
+            }
+
+
+            void bolgeListele()
+            {
+                scanf("%s",Sehir[i].cografiBolge);
+
+            }
+
+            fclose(d2);
+            free(sehir);
+            free(komsu);
+
+
+            //bolgeListele();
+        }
+        else
+        {
+            printf("Dosya bulunamadi.");
+        }
+
+        goto begin;
+    }
+    case 5:
+    {
+        struct sehir *Sehir = malloc(sizeof(struct sehir)*82);
+        struct komsu *Komsu = malloc(sizeof(struct komsu)*82);
+
+        if(d1!=NULL)
+        {
+
+            int i = 0;
+
+            while(!feof(d1))
+            {
+                fscanf(d1,"%d,%s,%s,%s",
+                       &Sehir[i].plakaKodu,
+                       Sehir[i].sehirAdi,
+                       Sehir[i].cografiBolge,
+                       Komsu[i].komsuSehir);
+                //printf("%d\n",Sehir[i].plakaKodu);
+                //printf("%s\n",Sehir[i].sehirAdi);
+                //printf("%s\n",Sehir[i].cografiBolge);
+                //printf("%s\n",Komsu[i].komsuSehir);
+                printf("%d\t%s\t%s\n%s\n", Sehir[i].plakaKodu, Sehir[i].sehirAdi, Sehir[i].cografiBolge, Komsu[i].komsuSehir);
+                fprintf(d2,"%d\t%s\t%s\n%s\n", Sehir[i].plakaKodu, Sehir[i].sehirAdi, Sehir[i].cografiBolge, Komsu[i].komsuSehir);
+                i++;
+            }
+            fclose(d1);
+            char buffer[10240];
+            char *token;
+
+            while(fgets(buffer,10240,d1))
+            {
+                token=strtok(buffer,",");
+                Sehir[i].plakaKodu = atoi(token);
+
+                token=strtok(NULL,",");
+                strcpy(Sehir[i].sehirAdi,token);
+
+                token=strtok(NULL,",");
+                strcpy(Sehir[i].cografiBolge,token);
+
+                token=strtok(NULL,",");
+                strcpy(Komsu[i].komsuSehir,token);
+
+            }
+
+            token=strtok(NULL,",");
+            if(token)
+            {
+                Komsu[i].komsuSehir=malloc(sizeof(char *));
+                Komsu[i].komsuSehir[0]=strdup(token);
+                Komsu[i].komsuSize=1;
+
+                token=strtok(NULL,",");
+                while(token)
+                {
+                    Komsu[i].komsuSehir=realloc(Komsu[i].komsuSehir,(Komsu[i].komsuSize+1)*sizeof(char *));
+                    Komsu[i].komsuSehir[Komsu[i].komsuSize]=strdup(token);
+                    Komsu[i].komsuSize++;
+
+                    token=strtok(NULL,",");
+                }
+            }
+
+            fclose(d2);
+            free(sehir);
+            free(komsu);
+
+            //komsuyaGoreListele();
+
+        }
+        else
+        {
+            printf("Dosya bulunamadi.");
+        }
+
+        goto begin;
+    }
+    case 6:
+    {
+        struct sehir *Sehir = malloc(sizeof(struct sehir)*82);
+        struct komsu *Komsu = malloc(sizeof(struct komsu)*82);
+
+        if(d1!=NULL)
+        {
+
+            int i = 0;
+
+            while(!feof(d1))
+            {
+                fscanf(d1,"%d,%s,%s,%s",
+                       &Sehir[i].plakaKodu,
+                       Sehir[i].sehirAdi,
+                       Sehir[i].cografiBolge,
+                       Komsu[i].komsuSehir);
+                //printf("%d\n",Sehir[i].plakaKodu);
+                //printf("%s\n",Sehir[i].sehirAdi);
+                //printf("%s\n",Sehir[i].cografiBolge);
+                //printf("%s\n",Komsu[i].komsuSehir);
+                printf("%d\t%s\t%s\n%s\n", Sehir[i].plakaKodu, Sehir[i].sehirAdi, Sehir[i].cografiBolge, Komsu[i].komsuSehir);
+                fprintf(d2,"%d\t%s\t%s\n%s\n", Sehir[i].plakaKodu, Sehir[i].sehirAdi, Sehir[i].cografiBolge, Komsu[i].komsuSehir);
+                i++;
+            }
+            fclose(d1);
+            char buffer[10240];
+            char *token;
+
+            while(fgets(buffer,10240,d1))
+            {
+                token=strtok(buffer,",");
+                Sehir[i].plakaKodu = atoi(token);
+
+                token=strtok(NULL,",");
+                strcpy(Sehir[i].sehirAdi,token);
+
+                token=strtok(NULL,",");
+                strcpy(Sehir[i].cografiBolge,token);
+
+                token=strtok(NULL,",");
+                strcpy(Komsu[i].komsuSehir,token);
+
+            }
+
+            token=strtok(NULL,",");
+            if(token)
+            {
+                Komsu[i].komsuSehir=malloc(sizeof(char *));
+                Komsu[i].komsuSehir[0]=strdup(token);
+                Komsu[i].komsuSize=1;
+
+                token=strtok(NULL,",");
+                while(token)
+                {
+                    Komsu[i].komsuSehir=realloc(Komsu[i].komsuSehir,(Komsu[i].komsuSize+1)*sizeof(char *));
+                    Komsu[i].komsuSehir[Komsu[i].komsuSize]=strdup(token);
+                    Komsu[i].komsuSize++;
+
+                    token=strtok(NULL,",");
+                }
+            }
+
+
+            fclose(d1);
+            fclose(d2);
+            free(sehir);
+            free(komsu);
+            printf("Cikis yapildi!\n");
+            break;
+        }
+
+        else
+        {
+            printf("Dosya bulunamadi.");
+        }
+
+    }
+
+
+
+    }
+
+    //fclose(d1);
+    //fclose(d2);
+    printf("Hello world!\n");
+    return 0;
+
+}

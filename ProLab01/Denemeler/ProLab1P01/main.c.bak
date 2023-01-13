@@ -1,0 +1,1056 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <allegro.h>
+#include <math.h>
+
+
+int main(){
+
+allegro_init();
+set_gfx_mode(GFX_SAFE, 1280, 720, 0, 0);
+install_keyboard();
+
+int a=0, b=0, c=0, d=0, e=0, x=0, y=0, z=0, t=0, xYog=0, yYog=0, zYog=0, tYog=0, aYog=0, bYog=0, cYog=0, dYog=0, eYog=0;
+char aBas, aYon, bBas, bYon, cBas, cYon, dBas, dYon, eBas, eYon;
+int harita=0;
+
+HaritaSecim:
+printf("<--Harita seciniz (Harita 1 icin 1 - Harita 2 icin 2) -->");
+
+BITMAP *pic;
+BITMAP *img;
+
+pic = load_bitmap("Harita_01.bmp",NULL);
+
+draw_sprite(screen,pic , 11.5 , 8);
+
+scanf("%d", &harita);
+
+	if(harita==1){
+
+        set_gfx_mode(GFX_SAFE, 600, 600, 0, 0);
+
+        pic = load_bitmap("Harita_10.bmp",NULL);
+
+        draw_sprite(screen,pic , 0 , 0);
+
+		printf("\n\n<--Yollarin giris/cikis yonunu belirleyin. Giris icin 1, Cikis icin -1 -->\n\n");
+
+		xSecim:
+		printf("X yolu icin: \n");
+		scanf("%d", &x);
+			if(x==1){
+				printf("X yolu giristir.\n");
+			}
+			else if(x==-1){
+				printf("X yolu cikistir.\n");
+			}
+			else{
+				printf("Hatali giris yaptiniz tekrar deneyin.\n");
+				goto xSecim;
+			}
+
+		ySecim:
+		printf("Y yolu icin: \n");
+		scanf("%d", &y);
+			if(y==1){
+				printf("Y yolu giristir.\n");
+			}
+			else if(y==-1){
+				printf("Y yolu cikistir.\n");
+			}
+			else{
+				printf("Hatali giris yaptiniz tekrar deneyin.\n");
+				goto ySecim;
+			}
+
+		zSecim:
+		printf("Z yolu icin: \n");
+		scanf("%d", &z);
+			if(z==1){
+				printf("Z yolu giristir.\n");
+			}
+			else if(z==-1){
+				printf("Z yolu cikistir.\n");
+			}
+			else{
+				printf("Hatali giris yaptiniz tekrar deneyin.\n");
+				goto zSecim;
+			}
+
+		tSecim:
+		printf("T yolu icin: \n");
+		scanf("%d", &t);
+			if(t==1){
+				printf("T yolu giristir.\n");
+			}
+			else if(t==-1){
+				printf("T yolu cikistir.\n");
+			}
+			else{
+				printf("Hatali giris yaptiniz tekrar deneyin.\n");
+				goto tSecim;
+			}
+
+            if((x==1) && (y==1) && (z==-1) && (t==-1)){
+                    set_gfx_mode(GFX_SAFE, 600, 600, 0, 0);
+
+                    pic = load_bitmap("Harita_11.bmp",NULL);{
+                    draw_sprite(screen,pic , 0 , 0);
+                    }
+
+			}
+			else if((x==1) && (y==-1) && (z==1) && (t==-1)){
+
+                    set_gfx_mode(GFX_SAFE, 600, 600, 0, 0);
+
+                    pic = load_bitmap("Harita_12.bmp",NULL);
+
+                    draw_sprite(screen,pic , 0 , 0);
+
+			}
+			else if((x==1) && (y==-1) && (z==-1) && (t==1)){
+                    set_gfx_mode(GFX_SAFE, 600, 600, 0, 0);
+
+                    pic = load_bitmap("Harita_13.bmp",NULL);
+
+                    draw_sprite(screen,pic , 0 , 0);
+
+			}
+			else if((x==-1) && (y==1) && (z==1) && (t==-1)){
+                    set_gfx_mode(GFX_SAFE, 600, 600, 0, 0);
+
+                    pic = load_bitmap("Harita_14.bmp",NULL);
+
+                    draw_sprite(screen,pic , 0 , 0);
+
+			}
+			else if((x==-1) && (y==1) && (z==-1) && (t==1)){
+                    set_gfx_mode(GFX_SAFE, 600, 600, 0, 0);
+
+                    pic = load_bitmap("Harita_15.bmp",NULL);
+
+                    draw_sprite(screen,pic , 0 , 0);
+
+			}
+			else if((x==-1) && (y==-1) && (z==1) && (t==1)){
+                    set_gfx_mode(GFX_SAFE, 600, 600, 0, 0);
+
+                    pic = load_bitmap("Harita_16.bmp",NULL);
+
+                    draw_sprite(screen,pic , 0 , 0);
+
+			}
+			else{
+                printf("Hatali giris yaptiniz. Lutfen 2 giris 2 cikis giriniz.");
+				goto xSecim;
+				}
+
+		printf("\nGiris cikis yollari belirlenmistir.\n");
+		printf("\n<------Ara caddelerin yonunu belirleyin:------>\n\n");
+
+		aYol:
+		printf("A yolu icin baslangic noktasi belirleyiniz. (x-t) \n");
+		scanf(" %c", &aBas);
+		printf("A yolu icin yon belirleyiniz. (x-t) \n");
+		scanf(" %c", &aYon);
+
+			if((aBas=='x') && (aYon=='t')){
+				printf("A yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+                img = load_bitmap("a-2.bmp",NULL);{
+                    draw_sprite(screen,img , 115 , 116);
+                }
+			}
+			else if((aBas=='t') && (aYon=='x')){
+				printf("A yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+                img = load_bitmap("a-1.bmp",NULL);{
+                    draw_sprite(screen,img , 115 , 116);
+                }
+			}
+			else{
+				printf("Hatali giris yaptiniz tekrar deneyin.\n");
+				goto aYol;
+			}
+
+
+		bYol:
+		printf("B yolu icin baslangic noktasi belirleyiniz. (x-y) \n");
+		scanf(" %c", &bBas);
+		printf("B yolu icin yon belirleyiniz. (x-y) \n");
+		scanf(" %c", &bYon);
+
+    if(x==1 && aBas=='t' && aYon=='x' && bBas=='y' && bYon=='x'){
+	printf("Hatali giris! Lutfen girdiginiz yol yonlerine dikkat ediniz.\n\n");
+	goto aYol;
+	}
+	if(x==-1 && aBas=='x' && aYon=='t' && bBas=='x' && bYon=='y'){
+		printf("Hatali giris! Lutfen girdiginiz yol yonlerine dikkat ediniz.\n");
+	goto aYol;
+	}
+			if(bBas=='x' && bYon=='y'){
+				printf("B yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+				img = load_bitmap("b-2.bmp",NULL);{
+                    draw_sprite(screen,img , 340 , 117);
+                }
+			}
+			else if(bBas=='y' && bYon=='x'){
+				printf("B yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+				img = load_bitmap("b-1.bmp",NULL);{
+                    draw_sprite(screen,img , 340 , 117);
+                }
+			}
+			else{
+				printf("Hatali giris yaptiniz tekrar deneyin.\n");
+				goto bYol;
+			}
+
+		cYol:
+		printf("C yolu icin baslangic noktasi belirleyiniz. (z-t) \n");
+		scanf(" %c", &cBas);
+		printf("C yolu icin yon belirleyiniz. (z-t) \n");
+		scanf(" %c", &cYon);
+
+    if(t==1 && aBas=='x' && aYon=='t' && cBas=='z' && cYon=='t'){
+    printf("Hatali giris! Lutfen girdiginiz yol yonlerine dikkat ediniz.\n\n");
+	goto aYol;
+	}
+
+			if(cBas=='t' && cYon=='z'){
+				printf("C yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+				img = load_bitmap("c-2.bmp",NULL);{
+                    draw_sprite(screen,img , 115 , 342);
+                }
+			}
+			else if(cBas=='z' && cYon=='t'){
+				printf("C yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+				img = load_bitmap("c-1.bmp",NULL);{
+                    draw_sprite(screen,img , 115 , 342);
+                }
+			}
+			else{
+				printf("Hatali giris yaptiniz tekrar deneyin.\n");
+				goto cYol;
+			}
+
+		dYol:
+		printf("D yolu icin baslangic noktasi belirleyiniz. (y-z) \n");
+		scanf(" %c", &dBas);
+		printf("D yolu icin yon belirleyiniz. (y-z) \n");
+		scanf(" %c", &dYon);
+
+			if(dBas=='z' && dYon=='y'){
+				printf("D yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+				img = load_bitmap("d-1.bmp",NULL);{
+                    draw_sprite(screen,img , 341 , 342);
+                }
+			}
+			else if(dBas=='y' && dYon=='z'){
+				printf("D yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+				img = load_bitmap("d-2.bmp",NULL);{
+                    draw_sprite(screen,img , 341 , 342);
+                }
+			}
+			else{
+				printf("Hatali giris yaptiniz tekrar deneyin.\n");
+				goto dYol;
+			}
+
+
+
+	if(y==1 && bBas=='x' && bYon=='y' && dBas=='z' && dYon=='y'){
+	printf("Hatali giris! Lutfen girdiginiz yol yonlerine dikkat ediniz.\n\n");
+	goto aYol;
+	}
+	if(z==1 && cBas=='t' && cYon=='z' && dBas=='y' && bYon=='z'){
+	printf("Hatali giris! Lutfen girdiginiz yol yonlerine dikkat ediniz.\n\n");
+	goto aYol;
+	}
+
+if(aBas=='x' && aYon=='t'){
+a=1;
+}
+if(aBas=='t' && aYon=='x'){
+a=2;
+}
+if(bBas=='x' && bYon=='y'){
+b=1;
+}
+if(bBas=='y' && bYon=='x'){
+b=2;
+}
+if(cBas=='t' && cYon=='z'){
+c=1;
+}
+if(cBas=='z' && cYon=='t'){
+c=2;
+}
+if(dBas=='y' && dYon=='z'){
+d=1;
+}
+if(dBas=='z' && bYon=='y'){
+d=2;
+}
+
+        printf("\n<------Yollarin arac yogunlugunu giriniz.------>\n");
+
+		printf("\nX yolunun arac yogunlugunu giriniz.");
+		scanf("%d", &xYog);
+
+		printf("\nY yolunun arac yogunlugunu giriniz.");
+		scanf("%d", &yYog);
+
+		printf("\nZ yolunun arac yogunlugunu giriniz.");
+		scanf("%d", &zYog);
+
+		printf("\nT yolunun arac yogunlugunu giriniz.");
+		scanf("%d", &tYog);
+
+		printf("\nA yolunun arac yogunlugunu giriniz.");
+		scanf("%d", &aYog);
+
+		printf("\nB yolunun arac yogunlugunu giriniz.");
+		scanf("%d", &bYog);
+
+		printf("\nC yolunun arac yogunlugunu giriniz.");
+		scanf("%d", &cYog);
+
+		printf("\nD yolunun arac yogunlugunu giriniz.");
+		scanf("%d", &dYog);
+
+
+int girCikEsit = 0;
+int girCik = 0;
+if((x==1) && (y==1) && (z==-1) && (t==-1)){
+    if(xYog+yYog==zYog+tYog){girCikEsit = 1;}
+}
+else if((x==1) && (y==-1) && (z==1) && (t==-1)){
+    if(xYog+zYog==yYog+tYog){girCikEsit = 1;}
+}
+else if((x==1) && (y==-1) && (z==-1) && (t==1)){
+    if(xYog+tYog==yYog+zYog){girCikEsit = 1;}
+}
+else if((x==-1) && (y==1) && (z==1) && (t==-1)){
+    if(xYog+tYog==yYog+zYog){girCikEsit = 1;}
+}
+else if((x==-1) && (y==1) && (z==-1) && (t==1)){
+    if(xYog+zYog==yYog+tYog){girCikEsit = 1;}
+}
+else if((x==-1) && (y==-1) && (z==1) && (t==1)){
+    if(xYog+yYog==zYog+tYog){girCikEsit = 1;}
+}
+
+if(x==1 && a==1 && b==1){
+    if(xYog==aYog+bYog){girCik = 1;}
+}
+if(x==1 && a==1 && b==-1){
+    if(xYog==aYog-bYog){girCik = 1;}
+}
+if(x==1 && a==-1 && b==1){
+    if(xYog==bYog-aYog){girCik = 1;}
+}
+if(x==-1 && a==-1 && b==-1){
+    if(xYog==aYog+bYog){girCik = 1;}
+}
+if(x==-1 && a==1 && b==-1){
+    if(xYog==bYog-aYog){girCik = 1;}
+}
+if(x==-1 && a==-1 && b==1){
+    if(xYog==aYog-bYog){girCik = 1;}
+}
+if(y==-1 && b==-1 &&  d==-1){
+    if(yYog==bYog-dYog){girCik = 1;}
+}
+if(y==1 && b==1 && d==1){
+    if(yYog==dYog-bYog){girCik = 1;}
+}
+if(y==1 && b==-1 && d==1){
+    if(yYog==bYog+dYog){girCik = 1;}
+}
+if(y==-1 && b==-1 && d==-1){
+    if(yYog==dYog-bYog){girCik = 1;}
+}
+if(y==-1 && b==1 && d==-1){
+    if(yYog==bYog+dYog){girCik = 1;}
+}
+if(y==-1 && b==1 && d==1){
+    if(yYog==bYog-dYog){girCik = 1;}
+}
+if(z==1 && c==-1 && d==-1){
+    if(zYog==cYog+dYog){girCik = 1;}
+}
+if(z==1 && c==1 && d==-1){
+    if(zYog==dYog-cYog){girCik = 1;}
+}
+if(z==1 && c==-1 && d==1){
+    if(zYog==cYog-dYog){girCik = 1;}
+}
+if(z==-1 && c==1 && d==1){
+    if(zYog==cYog+dYog){girCik = 1;}
+}
+if(z==-1 && c==-1 && d==1){
+    if(zYog==dYog-cYog){girCik = 1;}
+}
+if(z==-1 && c==1 && d==-1){
+    if(zYog==cYog-dYog){girCik = 1;}
+}
+if(t==1 && a==1 && c==1){
+    if(tYog==aYog+cYog){girCik = 1;}
+}
+if(t==1 && a==1 && c==-1){
+    if(tYog==aYog-cYog){girCik = 1;}
+}
+if(t==1 && a==-1 && c==1){
+    if(tYog==cYog-aYog){girCik = 1;}
+}
+if(t==-1 && a==-1 && c==-1){
+    if(tYog==aYog+cYog){girCik = 1;}
+}
+if(t==-1 && a==1 && c==-1){
+    if(tYog==cYog-aYog){girCik = 1;}
+}
+if(t==-1 && a==-1 && c==1){
+    if(tYog==aYog+cYog){girCik = 1;}
+}
+
+}
+
+
+	else if(harita==2){
+
+        set_gfx_mode(GFX_SAFE, 600, 600, 0, 0);
+
+        pic = load_bitmap("Harita_20.bmp",NULL);
+
+        draw_sprite(screen,pic , 0 , 0);
+
+		printf("<------Yollarin giris/cikis yonunu belirleyin. Giris icin 1, Cikis icin -1------>\n\n");
+
+		XSecim:
+		printf("X yolu icin: \n");
+		scanf("%d", &x);
+			if(x==1){
+				printf("X yolu giristir.\n");
+			}
+			else if(x==-1){
+				printf("X yolu cikistir.\n");
+			}
+			else{
+				printf("Hatali giris yaptiniz tekrar deneyin.\n");
+				goto XSecim;
+			}
+
+		YSecim:
+		printf("Y yolu icin: \n");
+		scanf("%d", &y);
+			if(y==1){
+				printf("Y yolu giristir.\n");
+			}
+			else if(y==-1){
+				printf("Y yolu cikistir.\n");
+			}
+			else{
+				printf("Hatali giris yaptiniz tekrar deneyin.\n");
+				goto YSecim;
+			}
+
+		ZSecim:
+		printf("Z yolu icin: \n");
+		scanf("%d", &z);
+			if(z==1){
+				printf("Z yolu giristir.\n");
+			}
+			else if(z==-1){
+				printf("Z yolu cikistir.\n");
+			}
+			else{
+				printf("Hatali giris yaptiniz tekrar deneyin.\n");
+				goto ZSecim;
+			}
+
+		TSecim:
+		printf("T yolu icin: \n");
+		scanf("%d", &t);
+			if(t==1){
+				printf("T yolu giristir.\n");
+			}
+			else if(t==-1){
+				printf("T yolu cikistir.\n");
+			}
+			else{
+				printf("Hatali giris yaptiniz tekrar deneyin.\n");
+				goto TSecim;
+			}
+
+            if((x==1) && (y==1) && (z==-1) && (t==-1)){
+                    set_gfx_mode(GFX_SAFE, 600, 600, 0, 0);
+
+                    pic = load_bitmap("Harita_25.bmp",NULL);
+
+                    draw_sprite(screen,pic , 0 , 0);
+			}
+			else if((x==1) && (y==-1) && (z==1) && (t==-1)){
+                    set_gfx_mode(GFX_SAFE, 600, 600, 0, 0);
+
+                    pic = load_bitmap("Harita_22.bmp",NULL);
+
+                    draw_sprite(screen,pic , 0 , 0);
+			}
+			else if((x==1) && (y==-1) && (z==-1) && (t==1)){
+                    set_gfx_mode(GFX_SAFE, 600, 600, 0, 0);
+
+                    pic = load_bitmap("Harita_21.bmp",NULL);
+
+                    draw_sprite(screen,pic , 0 , 0);
+			}
+			else if((x==-1) && (y==1) && (z==1) && (t==-1)){
+                    set_gfx_mode(GFX_SAFE, 600, 600, 0, 0);
+
+                    pic = load_bitmap("Harita_24.bmp",NULL);
+
+                    draw_sprite(screen,pic , 0 , 0);
+			}
+			else if((x==-1) && (y==1) && (z==-1) && (t==1)){
+                    set_gfx_mode(GFX_SAFE, 600, 600, 0, 0);
+
+                    pic = load_bitmap("Harita_26.bmp",NULL);
+
+                    draw_sprite(screen,pic , 0 , 0);
+			}
+			else if((x==-1) && (y==-1) && (z==1) && (t==1)){
+                    set_gfx_mode(GFX_SAFE, 600, 600, 0, 0);
+
+                    pic = load_bitmap("Harita_23.bmp",NULL);
+
+                    draw_sprite(screen,pic , 0 , 0);
+			}
+			else{
+                printf("Hatali giris yaptiniz. Lutfen 2 giris 2 cikis giriniz.");
+				goto xSecim;
+				}
+
+
+		printf("\nGiris cikis yollari belirlenmistir.\n");
+		printf("\n<------Ara caddelerin yonunu belirleyin:------>\n\n");
+
+		AYol:
+		printf("A yolu icin baslangic noktasi belirleyiniz. (x-t) \n");
+		scanf(" %c", &aBas);
+		printf("A yolu icin yon belirleyiniz. (x-t) \n");
+		scanf(" %c", &aYon);
+			if(aBas=='x' && aYon=='t'){
+				printf("A yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+                img = load_bitmap("a-2.bmp",NULL);{
+                    draw_sprite(screen,img , 115 , 116);
+                }
+			}
+			else if(aBas=='t' && aYon=='x'){
+				printf("A yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+				img = load_bitmap("a-1.bmp",NULL);{
+                    draw_sprite(screen,img , 115 , 116);
+                }
+			}
+			else{
+				printf("Hatali giris yaptiniz tekrar deneyin.\n");
+				goto AYol;
+			}
+
+		BYol:
+		printf("B yolu icin baslangic noktasi belirleyiniz. (x-y) \n");
+		scanf(" %c", &bBas);
+	    printf("B yolu icin yon belirleyiniz. (x-y) \n");
+		scanf(" %c", &bYon);
+
+	if(x==1 && aBas=='t' && aYon=='x' && bBas=='y' && bYon=='x'){
+    printf("Hatali giris! Lutfen girdiginiz yol yonlerine dikkat ediniz.\n\n");
+	goto AYol;
+	}
+
+	if(x==-1 && aBas=='x' && aYon=='t' && bBas=='x' && bYon=='y'){
+		printf("Hatali giris! Lutfen girdiginiz yol yonlerine dikkat ediniz.\n");
+	goto AYol;
+	}
+
+			if(bBas=='x' && bYon=='y'){
+				printf("B yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+				img = load_bitmap("b-2.bmp",NULL);{
+                    draw_sprite(screen,img , 340 , 117);
+                }
+			}
+			else if(bBas=='y' && bYon=='x'){
+				printf("B yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+				img = load_bitmap("b-1.bmp",NULL);{
+                    draw_sprite(screen,img , 340 , 117);
+                }
+			}
+			else{
+				printf("Hatali giris yaptiniz tekrar deneyin.\n");
+				goto BYol;
+			}
+
+		CYol:
+		printf("C yolu icin baslangic noktasi belirleyiniz. (z-t) \n");
+		scanf(" %c", &cBas);
+	    printf("C yolu icin yon belirleyiniz. (z-t) \n");
+		scanf(" %c", &cYon);
+
+	if(t==1 && aBas=='x' && aYon=='t' && cBas=='z' && cYon=='t'){
+    printf("Hatali giris! Lutfen girdiginiz yol yonlerine dikkat ediniz.\n\n");
+	goto AYol;
+	}
+
+	if(t==-1 && aBas=='t' && aYon=='x' && cBas=='t' && cYon=='z'){
+		printf("Hatali giris! Lutfen girdiginiz yol yonlerine dikkat ediniz.\n");
+	goto AYol;
+	}
+
+			if(cBas=='t' && cYon=='z'){
+				printf("C yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+				img = load_bitmap("c-2.bmp",NULL);{
+                    draw_sprite(screen,img , 115 , 342);
+                }
+			}
+
+			else if(cBas=='z' && cYon=='t'){
+				printf("C yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+				img = load_bitmap("c-1.bmp",NULL);{
+                    draw_sprite(screen,img , 115 , 342);
+                }
+			}
+
+			else{
+				printf("Hatali giris yaptiniz tekrar deneyin.\n");
+				goto CYol;
+			}
+
+		DYol:
+		printf("D yolu icin baslangic noktasi belirleyiniz. (y-z) \n");
+		scanf(" %c", &dBas);
+		printf("D yolu icin yon belirleyiniz. (y-z) \n");
+		scanf(" %c", &dYon);
+			if(dBas=='z' && dYon=='y'){
+				printf("D yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+				img = load_bitmap("d-1.bmp",NULL);{
+                    draw_sprite(screen,img , 341 , 342);
+                }
+			}
+			else if(dBas=='y' && dYon=='z'){
+				printf("D yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+				img = load_bitmap("d-2.bmp",NULL);{
+                    draw_sprite(screen,img , 341 , 342);
+                }
+			}
+			else{
+				printf("Hatali giris yaptiniz tekrar deneyin.\n");
+				goto DYol;
+			}
+
+		EYol:
+		printf("E yolu icin baslangic noktasi belirleyiniz. (y-t) \n");
+		scanf(" %c", &eBas);
+		printf("E yolu icin yon belirleyiniz. (y-t) \n");
+		scanf(" %c", &eYon);
+			if(eBas=='t' && eYon=='y'){
+				printf("E yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+				img = load_bitmap("e-1.bmp",NULL);{
+                    draw_sprite(screen,img , 189 , 264);
+                }
+			}
+			else if(eBas=='y' && eYon=='t'){
+				printf("E yolu icin baslangic noktasi ve yon belirlenmistir.\n");
+				img = load_bitmap("e-2.bmp",NULL);{
+                    draw_sprite(screen,img , 189 , 264);
+                }
+			}
+			else{
+				printf("Hatali giris yaptiniz tekrar deneyin.\n");
+				goto EYol;
+			}
+
+	if(y==1 && bBas=='x' && bYon=='y' && dBas=='z' && dYon=='y'){
+    printf("Hatali giris! Lutfen girdiginiz yol yonlerine dikkat ediniz.\n\n");
+	goto AYol;
+	}
+	if(y==-1 && bBas=='y' && bYon=='x' && dBas=='y' && dYon=='z'){
+		printf("Hatali giris! Lutfen girdiginiz yol yonlerine dikkat ediniz.\n\n");
+	goto AYol;
+	}
+	if(z==1 && cBas=='t' && cYon=='z' && dBas=='y' && bYon=='z'){
+    printf("Hatali giris! Lutfen girdiginiz yol yonlerine dikkat ediniz.\n\n");
+	goto AYol;
+	}
+	if(z==-1 && cBas=='z' && cYon=='t' && dBas=='z' && bYon=='y'){
+		printf("Hatali giris! Lutfen girdiginiz yol yonlerine dikkat ediniz.\n\n");
+	goto AYol;
+	}
+	if(t==1 && aBas=='x' && bYon=='t' && cBas=='z' && cYon=='t' && eBas=='y' && eYon=='t'){
+		printf("Hatali giris! Lutfen girdiginiz yol yonlerine dikkat ediniz.\n\n");
+	goto AYol;
+	}
+	if(t==-1 && aBas=='t' && aYon=='x' && cBas=='t' && cYon=='z' && eBas=='t' && eYon=='y'){
+		printf("Hatali giris! Lutfen girdiginiz yol yonlerine dikkat ediniz.\n\n");
+	goto AYol;
+	}
+	if(y==1 && bBas=='x' && bYon=='y' && dBas=='z' && dYon=='y' && eBas=='t' && eYon=='y'){
+		printf("Hatali giris! Lutfen girdiginiz yol yonlerine dikkat ediniz.\n\n");
+	goto AYol;
+	}
+	if(y==-1 && bBas=='y' && bYon=='x' && dBas=='y' && dYon=='z' && eBas=='y' && eYon=='t'){
+		printf("Hatali giris! Lutfen girdiginiz yol yonlerine dikkat ediniz.\n\n");
+	goto AYol;
+	}
+
+if(aBas=='x' && aYon=='t'){
+a=1;
+}
+if(aBas=='t' && aYon=='x'){
+a=2;
+}
+if(bBas=='x' && bYon=='y'){
+b=1;
+}
+if(bBas=='y' && bYon=='x'){
+b=2;
+}
+if(cBas=='t' && cYon=='z'){
+c=1;
+}
+if(cBas=='z' && cYon=='t'){
+c=2;
+}
+if(dBas=='y' && dYon=='z'){
+d=1;
+}
+if(dBas=='z' && bYon=='y'){
+d=2;
+}
+if(eBas=='t' && eYon=='y'){
+e=1;
+}
+if(eBas=='y' && eYon=='t'){
+e=2;
+}
+
+
+        printf("\n<------Yollarin arac yogunlugunu giriniz.------>\n");
+
+		printf("\nX yolunun arac yogunlugunu giriniz.");
+		scanf("%d", &xYog);
+
+		printf("\nY yolunun arac yogunlugunu giriniz.");
+		scanf("%d", &yYog);
+
+		printf("\nZ yolunun arac yogunlugunu giriniz.");
+		scanf("%d", &zYog);
+
+		printf("\nT yolunun arac yogunlugunu giriniz.");
+		scanf("%d", &tYog);
+
+		printf("\nA yolunun arac yogunlugunu giriniz.");
+		scanf("%d", &aYog);
+
+		printf("\nB yolunun arac yogunlugunu giriniz.");
+		scanf("%d", &bYog);
+
+		printf("\nC yolunun arac yogunlugunu giriniz.");
+		scanf("%d", &cYog);
+
+		printf("\nD yolunun arac yogunlugunu giriniz.");
+		scanf("%d", &dYog);
+
+		printf("\nE yolunun arac yogunlugunu giriniz.");
+		scanf("%d", &eYog);
+
+int girCikEsit = 0;
+int girCik = 0;
+if((x==1) && (y==1) && (z==-1) && (t==-1)){
+    if(xYog+yYog==zYog+tYog){girCikEsit = 1;}
+}
+else if((x==1) && (y==-1) && (z==1) && (t==-1)){
+    if(xYog+zYog==yYog+tYog){girCikEsit = 1;}
+}
+else if((x==1) && (y==-1) && (z==-1) && (t==1)){
+    if(xYog+tYog==yYog+zYog){girCikEsit = 1;}
+}
+else if((x==-1) && (y==1) && (z==1) && (t==-1)){
+    if(xYog+tYog==yYog+zYog){girCikEsit = 1;}
+}
+else if((x==-1) && (y==1) && (z==-1) && (t==1)){
+    if(xYog+zYog==yYog+tYog){girCikEsit = 1;}
+}
+else if((x==-1) && (y==-1) && (z==1) && (t==1)){
+    if(xYog+yYog==zYog+tYog){girCikEsit = 1;}
+}
+
+
+
+if(x==1 && a==1 && b==1){
+    if(xYog==aYog+bYog){girCik = 1;}
+}
+if(x==1 && a==1 && b==-1){
+    if(xYog==aYog-bYog){girCik = 1;}
+}
+if(x==1 && a==-1 && b==1){
+    if(xYog==bYog-aYog){girCik = 1;}
+}
+if(x==-1 && a==-1 && b==-1){
+    if(xYog==aYog+bYog){girCik = 1;}
+}
+if(x==-1 && a==1 && b==-1){
+    if(xYog==bYog-aYog){girCik = 1;}
+}
+if(x==-1 && a==-1 && b==1){
+    if(xYog==aYog-bYog){girCik = 1;}
+}
+if(y==-1 && b==-1 &&  d==-1){
+    if(yYog==bYog-dYog){girCik = 1;}
+}
+if(y==1 && b==1 && d==1){
+    if(yYog==dYog-bYog){girCik = 1;}
+}
+if(y==1 && b==-1 && d==1){
+    if(yYog==bYog+dYog){girCik = 1;}
+}
+if(y==-1 && b==-1 && d==-1){
+    if(yYog==dYog-bYog){girCik = 1;}
+}
+if(y==-1 && b==1 && d==-1){
+    if(yYog==bYog+dYog){girCik = 1;}
+}
+if(y==-1 && b==1 && d==1){
+    if(yYog==bYog-dYog){girCik = 1;}
+}
+if(z==1 && c==-1 && d==-1){
+    if(zYog==cYog+dYog){girCik = 1;}
+}
+if(z==1 && c==1 && d==-1){
+    if(zYog==dYog-cYog){girCik = 1;}
+}
+if(z==1 && c==-1 && d==1){
+    if(zYog==cYog-dYog){girCik = 1;}
+}
+if(z==-1 && c==1 && d==1){
+    if(zYog==cYog+dYog){girCik = 1;}
+}
+if(z==-1 && c==-1 && d==1){
+    if(zYog==dYog-cYog){girCik = 1;}
+}
+if(z==-1 && c==1 && d==-1){
+    if(zYog==cYog-dYog){girCik = 1;}
+}
+if(t==1 && a==1 && c==1){
+    if(tYog==aYog+cYog){girCik = 1;}
+}
+if(t==1 && a==1 && c==-1){
+    if(tYog==aYog-cYog){girCik = 1;}
+}
+if(t==1 && a==-1 && c==1){
+    if(tYog==cYog-aYog){girCik = 1;}
+}
+if(t==-1 && a==-1 && c==-1){
+    if(tYog==aYog+cYog){girCik = 1;}
+}
+if(t==-1 && a==1 && c==-1){
+    if(tYog==cYog-aYog){girCik = 1;}
+}
+if(t==-1 && a==-1 && c==1){
+    if(tYog==aYog+cYog){girCik = 1;}
+}
+if(y==-1 && b==-1 &&  d==-1 && e==1){
+    if(yYog==bYog-dYog-eYog){girCik = 1;}
+}
+if(y==-1 && b==-1 &&  d==-1 && e==-1){
+    if(yYog==bYog-dYog+eYog){girCik = 1;}
+}
+if(y==1 && b==1 && d==1 && e==1){
+    if(yYog==dYog-bYog-eYog){girCik = 1;}
+}
+if(y==1 && b==1 && d==1 && e==-1){
+    if(yYog==dYog-bYog+eYog){girCik = 1;}
+}
+if(y==1 && b==-1 && d==1 && e==1){
+    if(yYog==bYog+dYog-eYog){girCik = 1;}
+}
+if(y==1 && b==-1 && d==1 && e==-1){
+    if(yYog==bYog+dYog+eYog){girCik = 1;}
+}
+if(y==-1 && b==-1 && d==-1 && e==1){
+    if(yYog==dYog-bYog-eYog){girCik = 1;}
+}
+if(y==-1 && b==-1 && d==-1 && e==-1){
+    if(yYog==dYog-bYog+eYog){girCik = 1;}
+}
+if(y==-1 && b==1 && d==-1 && e==1){
+    if(yYog==bYog+dYog-eYog){girCik = 1;}
+}
+if(y==-1 && b==1 && d==-1 && e==-1){
+    if(yYog==bYog+dYog+eYog){girCik = 1;}
+}
+if(y==-1 && b==1 && d==1 && e==1){
+    if(yYog==bYog-dYog-eYog){girCik = 1;}
+}
+if(y==-1 && b==1 && d==1 && e==-1){
+    if(yYog==bYog-dYog+eYog){girCik = 1;}
+}
+if(t==1 && a==1 && c==1 && e==1){
+    if(tYog==aYog+cYog+eYog){girCik = 1;}
+}
+if(t==1 && a==1 && c==1 && e==-1){
+    if(tYog==aYog+cYog-eYog){girCik = 1;}
+}
+if(t==1 && a==1 && c==-1 && e==1){
+    if(tYog==aYog-cYog+eYog){girCik = 1;}
+}
+if(t==1 && a==1 && c==-1 && e==-1){
+    if(tYog==aYog-cYog-eYog){girCik = 1;}
+}
+if(t==1 && a==-1 && c==1 && e==1){
+    if(tYog==cYog-aYog+eYog){girCik = 1;}
+}
+if(t==1 && a==-1 && c==1 && e==-1){
+    if(tYog==cYog-aYog-eYog){girCik = 1;}
+}
+if(t==-1 && a==-1 && c==-1 && e==1){
+    if(tYog==aYog+cYog+eYog){girCik = 1;}
+}
+if(t==-1 && a==-1 && c==-1 && e==-1){
+    if(tYog==aYog+cYog-eYog){girCik = 1;}
+}
+if(t==-1 && a==1 && c==-1 && e==1){
+    if(tYog==cYog-aYog+eYog){girCik = 1;}
+}
+if(t==-1 && a==1 && c==-1 && e==-1){
+    if(tYog==cYog-aYog-eYog){girCik = 1;}
+}
+if(t==-1 && a==-1 && c==1 && e==1){
+    if(tYog==aYog+cYog+eYog){girCik = 1;}
+}
+if(t==-1 && a==-1 && c==1 && e==-1){
+    if(tYog==aYog+cYog-eYog){girCik = 1;}
+}
+}
+
+	else{
+	    printf("Hatali giris yaptiniz tekrar deneyin.");
+	    goto HaritaSecim;
+	}
+
+    allegro_exit();
+	return 0;
+}
+END_OF_MAIN()
+
+
+
+/*
+
+/**************************************************
+*****SOLVING SYSTEM OF LINEAR EQUATIONS WITH*******
+*****GAUSS ELIMINATION WITH PARIAL PIVOTING********
+**************************************************/
+#include<stdio.h>
+#include<math.h>
+/*******
+ Function that performs Gauss-Elimination and returns the Upper triangular matrix and solution of equations:
+There are two options to do this in C.
+1. Pass the augmented matrix (a) as the parameter, and calculate and store the upperTriangular(Gauss-Eliminated Matrix) in it.
+2. Use malloc and make the function of pointer type and return the pointer.
+This program uses the first option.
+********/
+void gaussEliminationLS(int m, int n, double a[m][n], double x[n-1]){
+    int i,j,k;
+    for(i=0;i<m-1;i++){
+        //Partial Pivoting
+        for(k=i+1;k<m;k++){
+            //If diagonal element(absolute vallue) is smaller than any of the terms below it
+            if(fabs(a[i][i])<fabs(a[k][i])){
+                //Swap the rows
+                for(j=0;j<n;j++){                
+                    double temp;
+                    temp=a[i][j];
+                    a[i][j]=a[k][j];
+                    a[k][j]=temp;
+                }
+            }
+        }
+        //Begin Gauss Elimination
+        for(k=i+1;k<m;k++){
+            double  term=a[k][i]/ a[i][i];
+            for(j=0;j<n;j++){
+                a[k][j]=a[k][j]-term*a[i][j];
+            }
+        }
+         
+    }
+    //Begin Back-substitution
+    for(i=m-1;i>=0;i--){
+        x[i]=a[i][n-1];
+        for(j=i+1;j<n-1;j++){
+            x[i]=x[i]-a[i][j]*x[j];
+        }
+        x[i]=x[i]/a[i][i];
+    }
+             
+}
+/*******
+Function that reads the elements of a matrix row-wise
+Parameters: rows(m),columns(n),matrix[m][n] 
+*******/
+void readMatrix(int m, int n, double matrix[m][n]){
+    int i,j;
+    for(i=0;i<m;i++){
+        for(j=0;j<n;j++){
+            scanf("%lf",&matrix[i][j]);
+        }
+    } 
+}
+/*******
+Function that prints the elements of a matrix row-wise
+Parameters: rows(m),columns(n),matrix[m][n] 
+*******/
+void printMatrix(int m, int n, double matrix[m][n]){
+    int i,j;
+    for(i=0;i<m;i++){
+        for(j=0;j<n;j++){
+            printf("%lf\t",matrix[i][j]);
+        }
+        printf("\n");
+    } 
+}
+/*******
+Function that copies the elements of a matrix to another matrix
+Parameters: rows(m),columns(n),matrix1[m][n] , matrix2[m][n]
+*******/
+void copyMatrix(int m, int n, double matrix1[m][n], double matrix2[m][n]){
+    int i,j;
+    for(i=0;i<m;i++){
+        for(j=0;j<n;j++){
+            matrix2[i][j]=matrix1[i][j];
+        }
+    } 
+}
+ 
+int main(){
+    int m,n,i,j;
+    printf("Enter the size of the augmeted matrix:\nNo. of rows (m)\n");
+    scanf("%d",&m);
+    printf("No.of columns (n)\n");
+    scanf("%d",&n);
+    //Declare a matrix to store the user given matrix
+    double a[m][n];
+    //Declare another matrix to store the resultant matrix obtained after Gauss Elimination
+    double U[m][n];
+    //Declare an array to store the solution of equations
+    double x[m];
+    printf("\nEnter the elements of matrix:\n");
+    readMatrix(m,n,a);
+    copyMatrix(m,n,a,U);
+    //Perform Gauss Elimination 
+    gaussEliminationLS(m,n,U,x);
+    printf("\nThe Upper Triangular matrix after Gauss Eliminiation is:\n\n");
+    printMatrix(m,n,U);
+    printf("\nThe solution of linear equations is:\n\n");
+    for(i=0;i<n-1;i++){
+        printf("x[%d]=\t%lf\n",i+1,x[i]);
+    }
+}
+*/

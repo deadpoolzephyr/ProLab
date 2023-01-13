@@ -1,0 +1,130 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+typedef struct Node
+{
+    char Word[25];
+    int Count;
+    struct Node *Next;
+};
+
+void GetWord( FILE *fileptr, char word[] ) // function call for GetWord
+{
+    char tempword[25] = "";
+    int i = 0;
+    fscanf( fileptr, "%s", tempword );
+    if(!feof(fileptr))
+    {
+        strcpy( word, strtok( tempword, " ,.;:!?-()" ));
+        while( word[i] != '\0' )
+        {
+            word[i] = tolower(word[i]);
+            i++;
+        }
+        printf( "%s\n", word );
+    }
+    return;
+}
+
+struct Node* InsertAtBeginning(struct Node *start, struct Node *newptr )
+{
+    newptr->Next = start;
+    start = newptr;
+    return start;
+}
+
+void InsertInMiddle( struct Node *newptr, struct Node *current, struct Node *previous )
+{
+    previous->Next = newptr;
+    newptr->Next = current;
+    return;
+
+}
+
+struct Node* MakeNewNode(char word[])
+{
+    struct Node * ptr;
+    ptr = malloc(sizeof(struct Node));
+    strcpy( ptr->Word, word);
+    ptr->Count = 1;
+    ptr->Next=NULL;
+    return ptr;
+}
+
+void PrintList( struct Node *start ){
+    printf("     Word       Count\n");
+    printf("--------------- -----\n");
+
+    while( start != NULL )
+    {
+        printf("%15s %5d\n", start->Word, start->Count);
+        start = start->Next;
+    }
+    return;
+}
+
+int main(){
+    /* declare and initialize variables */
+    FILE *fileptr;
+    char word[25];
+    struct Node *start = NULL;
+    struct Node *newptr = NULL;
+    struct Node *current = NULL;
+    struct Node *previous = NULL;
+
+    printf("Openning file...\n");
+    if((fileptr= fopen("meti.txt", "r")) == NULL )
+    {
+        printf("Unable to open file...\n");
+        return;
+    }
+
+
+    newptr = MakeNewNode(word); // function call for MakeNewNode
+
+    /* read a word from the file */
+    GetWord( fileptr, word);
+
+
+    /* read words and process until end of file */
+
+
+    /* Set current pointer to the beginning of the list */
+
+    start = InsertAtBeginning( start, newptr); // fuction call InsertAtBeginning
+
+    /* Search to see if the word already exists in the list */
+    while(current != NULL && strcmp( current->Word, word) < 0)
+    {
+        current = current->Next;
+        previous=previous->Next;
+    }
+    //if(current == NULL)
+    //else
+
+    if (strcmp (current-> Word, word == 0))
+    {
+        current->Count ++;
+    }
+    else
+        newptr = MakeNewNode;
+    InsertInMiddle( newptr, current, previous );
+
+
+
+    /* First check to see if it goes before the first word */
+
+    /* check if it matches the first word */
+
+    /* if not at the beginning, it goes in the middle or end */
+
+    /* read next word from the file */
+    GetWord( fileptr, word ); // Function call for GetWord
+
+    PrintList( start ); // Function call for PrintList
+    printf("\n-------------------------------\n\n");
+    fclose( fileptr );
+    return;
+}// end Main function
